@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shop List</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f7f9fc;
+            margin: 0;
+            padding: 30px;
+        }
+
+        h1 {
+            color: #2d3436;
+            font-size: 26px;
+            margin-bottom: 25px;
+            border-left: 6px solid #27ae60;
+            padding-left: 12px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        thead {
+            background-color: #27ae60;
+            color: white;
+        }
+
+        th, td {
+            padding: 14px 16px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        th {
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        td {
+            color: #2f3640;
+        }
+
+        tbody tr:hover {
+            background-color: #f0f9f4;
+        }
+
+        .yes {
+            color: green;
+            font-weight: bold;
+        }
+
+        .no {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Shop List</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Email</th>
+                <th>Category</th>
+                <th>Bio</th>
+                <th>Number</th>
+                <th>Active</th>
+                <th>Open Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for s in shop %}
+            <tr>
+                <td>{{ s.name }}</td>
+                <td>{{ s.address }}</td>
+                <td>{{ s.email }}</td>
+                <td>{{ s.catagory }}</td>
+                <td>{{ s.bio }}</td>
+                <td>{{ s.number }}</td>
+                <td><span class="{% if s.is_active %}yes{% else %}no{% endif %}">{{ s.is_active|yesno:"Yes,No" }}</span></td>
+                <td>{{ s.is_open|date:"Y-m-d H:i" }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>

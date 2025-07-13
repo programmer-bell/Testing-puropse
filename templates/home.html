@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Schools and Shops</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            border-left: 6px solid #3498db;
+            padding-left: 10px;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 40px;
+            background-color: #fff;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        thead {
+            background-color: #3498db;
+            color: #fff;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tbody tr:hover {
+            background-color: #f0f8ff;
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        th {
+            font-weight: 600;
+        }
+
+        td {
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>School List</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Govt.</th>
+                <th>Scholarship</th>
+                <th>Bio</th>
+                <th>Number</th>
+                <th>Grade</th>
+                <th>Email</th>
+                <th>Open Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for s in school %}
+            <tr>
+                <td>{{ s.name }}</td>
+                <td>{{ s.address }}</td>
+                <td>{{ s.is_government|yesno:"Yes,No" }}</td>
+                <td>{{ s.is_scolarshpis|yesno:"Yes,No" }}</td>
+                <td>{{ s.bio }}</td>
+                <td>{{ s.number }}</td>
+                <td>{{ s.grade }}</td>
+                <td>{{ s.email }}</td>
+                <td>{{ s.is_open|date:"Y-m-d H:i" }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h1>Shop List</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Email</th>
+                <th>Category</th>
+                <th>Bio</th>
+                <th>Number</th>
+                <th>Active</th>
+                <th>Open Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for s in shop %}
+            <tr>
+                <td>{{ s.name }}</td>
+                <td>{{ s.address }}</td>
+                <td>{{ s.email }}</td>
+                <td>{{ s.catagory }}</td>
+                <td>{{ s.bio }}</td>
+                <td>{{ s.number }}</td>
+                <td>{{ s.is_active|yesno:"Yes,No" }}</td>
+                <td>{{ s.is_open|date:"Y-m-d H:i" }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>
+
